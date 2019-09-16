@@ -7,6 +7,26 @@ new Vue({
         turns: []
     },
     methods: {
+        healImage: function() {
+            document.getElementById("playerStatus").src = "images/heal.png";
+            setTimeout("defaultImage()", 2000);
+        },
+        attackImagePlayer: function() {
+            document.getElementById("playerStatus").src = "images/sword-edit.png";
+            setTimeout("defaultImage()", 2000);
+        },
+        specialAttackImage: function() {
+            document.getElementById("playerStatus").src = "images/power-sword.png";
+            setTimeout("defaultImage()", 2000);
+        },
+        attackImageMonster: function() {
+            document.getElementById("monsterStatus").src = "images/sword-edit.png";
+            setTimeout("defaultImage()", 2000);
+        },
+        defaultImage: function() {
+            document.getElementById("playerStatus").src = "images/dotdotdot.png";
+            document.getElementById("monsterStatus").src = "images/dotdotdot.png";
+        },
         startGame: function () {
             this.gameIsRunning = true;
             this.playerHealth = 100;
@@ -18,12 +38,12 @@ new Vue({
             this.monsterHealth -= damage;
             this.turns.unshift({
                 isPlayer: true,
-                text: this.turns.length + '. Player hits Monster for ' + damage + " HP."
+                text: 'Turn ' + this.turns.length + ': Player hits Monster for ' + damage + " HP."
             });
             if (this.checkWin()) {
                 return;
             }
-
+            this.attackImagePlayer();
             this.monsterAttacks();
         },
         specialAttack: function () {
@@ -31,11 +51,12 @@ new Vue({
             this.monsterHealth -= damage;
             this.turns.unshift({
                 isPlayer: true,
-                text: this.turns.length + '. Player hits Monster hard for ' + damage + " HP."
+                text: 'Turn ' + this.turns.length + ': Player hits Monster hard for ' + damage + " HP."
             });
             if (this.checkWin()) {
                 return;
             }
+            this.specialAttackImage();
             this.monsterAttacks();
         },
         heal: function () {
@@ -46,8 +67,9 @@ new Vue({
             }
             this.turns.unshift({
                 isPlayer: true,
-                text: this.turns.length + '. Player heals for 10 HP.'
+                text: 'Turn ' + this.turns.length + ': Player heals for 10 HP.'
             });
+            this.healImage();
             this.monsterAttacks();
         },
         giveUp: function () {
@@ -59,8 +81,9 @@ new Vue({
             this.checkWin();
             this.turns.unshift({
                 isPlayer: false,
-                text: this.turns.length + '. Monster hits Player for ' + damage + " HP."
+                text: 'Turn ' + this.turns.length + ': Monster hits Player for ' + damage + " HP."
             });
+            this.attackImageMonster();
         },
         calculateDamage: function(min, max) {
             return Math.max(Math.floor(Math.random() * max) + 1, min);
@@ -90,75 +113,3 @@ new Vue({
         }
     }
 });
-
-
-
-
-// Older Code, for Reference if Needed
-
-// // register modal component
-// Vue.component('modal', {
-//     template: '#modal-template'
-//     })
-
-//     data: {
-//         playerHealth: 100,
-//         monsterHealth: 100,
-//         gameIsRunning: false,
-//         turns: [],
-//         showModal: false,
-//         response: "", // blank text, will be filled with responses as game progresses
-//         modalTitle: "",
-//         randomNum: 0;
-//     },
-//     methods: {
-//         startGame: function () {
-//             this.gameIsRunning = true;
-//             this.playerHealth = 100;
-//             this.monsterHealth = 100;
-//             this.turns = [];
-//             this.showModal = false;
-//         },
-//         poison: function () {
-//             var isTrue = 3;
-//             if(isTrue){
-//                 if(this.turns.length)
-//                 return true;
-//             }else{
-//                 return false;
-//             }
-//             return false;
-//         },
-//         giveUp: function () {
-//             this.modalTitle = "Game Over!";
-//             this.response = "Sorry to see you give up...";
-//             this.showModal = true;
-//         },
-//         monsterAttacks: function() {
-//             var damage = this.calculateDamage(5, 12);
-//             this.playerHealth -= damage;
-//             this.randomNum = Math.floor(Math.random() * (5 - 1 + 1)) + 1;
-//             poison(randomNum);
-
-//             this.checkWin();
-//             this.turns.unshift({
-//                 isPlayer: false,
-//                 text: this.turns.length + '. Monster hits Player for ' + damage + ' Points.'
-//             });
-//         },    
-//         checkWin: function() {
-//             if (this.monsterHealth <= 0) { // Player Wins!
-//                 this.modalTitle = "Victory!";
-//                 this.response = "Congratulations, You Win!";
-//                 this.showModal = true; // Modal pops up
-//                 return true;
-//             } else if (this.playerHealth <= 0) { // Player Loses!
-//                 this.modalTitle = "Game Over!";
-//                 this.response = "Sorry, You Lost!";
-//                 this.showModal = true; // Modal pops up
-//                 return false;
-//             }
-//         },
-//         gameOver: function() {
-//             window.open("game-over.html");  
-//         }
