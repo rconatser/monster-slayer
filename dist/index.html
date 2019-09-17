@@ -1,0 +1,73 @@
+<!-- <!DOCTYPE html><html><head><meta charset=utf-8><meta http-equiv=X-UA-Compatible content="IE=edge"><meta name=viewport content="width=device-width,initial-scale=1"><title>Vue App</title><link href=/css/app.e2713bb0.css rel=preload as=style><link href=/js/app.c96a70ba.js rel=preload as=script><link href=/js/chunk-vendors.fc6f837c.js rel=preload as=script><link href=/css/app.e2713bb0.css rel=stylesheet></head>
+<body><div id=app> -->
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Monster Slayer</title>
+        <meta charset="UTF-8">
+        <meta name=viewport content="width=device-width,initial-scale=1">
+        <script src="https://npmcdn.com/vue/dist/vue.js"></script>
+        <link rel="stylesheet" href="css/foundation.min.css">
+        <link rel="stylesheet" href="css/app.css">
+    </head>
+    <body>
+        <div id="app">
+            <section class="row">
+                <div class="small-6 columns player">
+                    <h1 class="text-center">PLAYER</h1>
+                    <img class="profile" src="images\hero-drawing-png.png" alt="player image" />
+                    <div class="notify">
+                            <img id="playerStatus" src="images/dotdotdot.png" alt="dot dot dot" />
+                            <div class="bubble">
+                            </div>
+                        </div>
+                    <div class="healthbar">
+                        <div class="healthbar text-center"
+                            style="background: linear-gradient(60deg, rgba(150,201,0,1) 32%, rgba(20,196,0,1) 100%); margin: 0; color: white; font-weight: bold; font-size: 16px; padding-top: 9px; letter-spacing: 1px;"
+                            :style="{width: playerHealth + '%'}">
+                            {{ playerHealth }}
+                        </div>
+                    </div>
+                </div>
+                <div class="small-6 columns monster">
+                    <h1 class="text-center">MONSTER</h1>
+                    <img class="profile" src="images\demon-hunter.png" alt="demon image" />
+                    <div class="notify">
+                            <img id="monsterStatus" src="images/dotdotdot.png" alt="dot dot dot" />
+                        <div class="bubble">
+                        </div>
+                    </div>
+                    <div class="healthbar">
+                        <div class="healthbar text-center"
+                            style="background: linear-gradient(60deg, rgba(150,201,0,1) 32%, rgba(20,196,0,1) 100%); margin: 0; color: white; font-weight: bold; font-size: 16px; padding-top: 9px; letter-spacing: 1px;"
+                            :style="{width: monsterHealth + '%'}">
+                            {{ monsterHealth }}
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="row controls" v-if="!gameIsRunning">
+                <div class="small-12 columns">
+                    <button id="start-game" @click="startGame">START NEW GAME</button>
+                </div>
+            </section>
+            <section class="row controls" v-else>
+                <div class="small-12 columns">
+                    <button id="attack" @click="attack">ATTACK</button>
+                    <button id="special-attack" @click="specialAttack">SPECIAL ATTACK</button>
+                    <button id="heal" @click="heal">HEAL</button>
+                    <button id="give-up" @click="giveUp">GIVE UP</button>
+                </div>
+            </section>
+            <section class="row log" v-if="turns.length > 0">
+                <div class="small-12 columns">
+                    <ul>
+                        <li v-for="turn in turns" :class="{'player-turn': turn.isPlayer, 'player-turn-heal': turn.text.includes('heals') ? true : false, 'monster-turn': !turn.isPlayer}">
+                            {{ turn.text }}
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+        <script src="/js/app.js"></script>
+</div><script src=/js/chunk-vendors.fc6f837c.js></script><script src=/js/app.c96a70ba.js></script></body></html>

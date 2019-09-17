@@ -1,0 +1,198 @@
+/*--------------------------------------------------*/
+/*- ----------------General Styles---------------- -*/
+/*--------------------------------------------------*/
+body {
+    background-image: url("../images/steven-heinz-camera-1.jpg");
+    }
+    
+    
+    /*-------------------------------------------------*/
+    /*- ------------Player/Monster Styles------------ -*/
+    /*-------------------------------------------------*/
+    .player img.profile, .monster img.profile {
+    width: 50%;
+    margin: 20px 25%;
+    border-radius: 20px;
+    }
+    
+    .player img.profile {
+    box-shadow: 0 0 15px rgba(0, 136, 204,1);
+    }
+    
+    .monster img.profile {
+    box-shadow: 0 0 15px rgba(153, 0, 0,.8);
+    }
+    
+    .text-center {
+    text-align: center;
+    }
+    
+    .healthbar {
+    width: 80%;
+    height: 40px;
+    box-shadow: 0 0 2px rgba(0,0,0,.3);
+    background-color: #111;
+    margin: auto;
+    transition: width 500ms;
+    }
+    
+    div.notify {
+    background-color: white;
+    height: 80px;
+    width: 80px;
+    border-radius: 4px;
+    }
+    
+    div.player div.notify {
+    float: right;
+    margin-top: -230px;
+    }
+    
+    div.monster div.notify {
+    float: left;
+    margin-top: -230px;
+    }
+    
+    div.player div.notify div.bubble {
+        width: 0;
+        height: 0; 
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent; 
+        border-right:10px solid white;
+        position: absolute;
+        top: 180px;
+        left: 665px;
+    }
+    
+    div.monster div.notify div.bubble {
+    width: 0; 
+    height: 0; 
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent; 
+    border-left:10px solid white;
+    position: absolute;
+        top: 180px;
+        right: 665px;
+    }
+
+    div.player div.notify img {
+        height: 80px;
+        width: 80px;
+    }
+
+    div.monster div.notify img {
+        height: 80px;
+        width: 80px;
+    }
+    
+    /*----------------------------------------------*/
+    /*- ----------------Log Styles---------------- -*/
+    /*----------------------------------------------*/
+    .controls, .log {
+    margin-top: 30px;
+    text-align: center;
+    padding: 10px;
+    }
+    
+    .log {
+    box-shadow: 0 1px 5px rgba(0,0,0,.3);
+    background-color: #222;
+    }
+
+    .log ul li {
+        margin: 5px;
+        opacity: 1;
+        }
+
+    .log ul li:nth-child(n+3) {
+        opacity: 0.75;
+    }
+
+    .log ul li:nth-child(n+4) {
+        opacity: 0.5;
+    }
+
+    .log ul li:nth-child(n+5) {
+        opacity: .25;
+    }
+
+    .log ul li:nth-child(n+6) {
+        opacity: 0;
+        display: none;
+    }
+    
+    .turn {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    font-size: 22px;
+    }
+    
+    .log ul {
+    list-style: none;
+    font-weight: bold;
+    text-transform: uppercase;
+    }
+    
+    .log ul li.player-turn {
+    color: #0088cc;
+    }
+    
+    .log ul .monster-turn {
+    color: #990000;
+    }
+
+    .log ul li.player-turn-heal {
+    color: #558000;
+    }
+    /*--------------------------------------------------*/
+    /*- ----------------Buttons Styles---------------- -*/
+    /*--------------------------------------------------*/
+    button {
+    font-size: 20px;
+    padding: 15px 20px;
+    box-shadow: 0 0 5px rgba(0,0,0,.5);
+    margin: 10px;
+    color: white;
+    letter-spacing: 2px;
+    }
+    
+    #start-game {
+    background: linear-gradient(60deg, rgba(64,64,191,1) 0%, rgba(0,196,164,1) 100%);
+    }
+    
+    #start-game:hover {
+    background: linear-gradient(60deg, rgba(33,33,112,1) 0%, rgba(10,134,114,1) 100%);
+    }
+    
+    #attack {
+    background-color: #b30000;
+    }
+    
+    #attack:hover {
+    background-color: #800000;;
+    }
+    
+    #special-attack {
+    background-color: #cc7a00;
+    }
+    
+    #special-attack:hover {
+    background-color: #995c00;
+    }
+    
+    #heal {
+    background-color: #77b300;
+    }
+    
+    #heal:hover {
+    background-color: #558000;
+    }
+    
+    #give-up {
+    background-color: #3973ac;
+    }
+    
+    #give-up:hover {
+    background-color: #2d5986;
+    }
