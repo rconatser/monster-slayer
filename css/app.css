@@ -60,9 +60,8 @@ body {
         border-top: 10px solid transparent;
         border-bottom: 10px solid transparent; 
         border-right:10px solid white;
-        position: absolute;
-        top: 170px;
-        left: 375px;
+        margin-top: -40px;
+        margin-left: -10px;
     }
     
     div.monster div.notify div.bubble {
@@ -71,9 +70,8 @@ body {
     border-top: 10px solid transparent;
     border-bottom: 10px solid transparent; 
     border-left:10px solid white;
-    position: absolute;
-        top: 170px;
-        right: 375px;
+    margin-top: -40px;
+    margin-left: 78px;
     }
 
     div.player div.notify img, div.monster div.notify img {
